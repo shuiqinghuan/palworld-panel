@@ -3,7 +3,7 @@
 set -e
 
 echo "=== 幻兽帕鲁服务器一键安装脚本 ==="
-echo "版本: 1.0.0"
+echo "自动安装最新版本"
 echo ""
 
 if [ "$EUID" -ne 0 ]; then
