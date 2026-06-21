@@ -42,7 +42,20 @@ apt update && apt upgrade -y
 
 echo ""
 echo "=== 步骤2: 安装依赖 ==="
-apt install -y steamcmd lib32gcc-s1 screen
+apt install -y lib32gcc-s1 screen curl
+
+echo ""
+echo "=== 步骤2.1: 安装SteamCMD ==="
+if ! command -v steamcmd &> /dev/null; then
+    echo "SteamCMD 未安装，正在手动安装..."
+    mkdir -p /opt/steamcmd
+    cd /opt/steamcmd
+    curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+    ln -sf /opt/steamcmd/steamcmd.sh /usr/local/bin/steamcmd
+    echo "SteamCMD 安装完成"
+else
+    echo "SteamCMD 已安装"
+fi
 
 echo ""
 echo "=== 步骤3: 创建steam用户 ==="
